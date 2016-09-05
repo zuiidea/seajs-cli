@@ -13,6 +13,7 @@ var gulp = require('gulp'),
     htmlmin = require('gulp-htmlmin'),
     plumber = require('gulp-plumber'),
     spriter = require('gulp-sprite2'),
+    seajsCombo = require('gulp-seajs-combo'),
     config = require('./gulpconfig.json');
 
 
@@ -40,9 +41,25 @@ gulp.task('css-min', ['css'], function() {
         .pipe(gulp.dest(config.dest.css));
 });
 
-gulp.task('js', function() {
-    return gulp.src(config.src.js)
+// js
+
+gulp.task('entry', function() {
+    return gulp.src(config.src.entry)
+        .pipe(seajsCombo())
+        .pipe(rename({
+            basename: 'build'
+        }))
         .pipe(gulp.dest(config.dest.js));
+});
+
+gulp.task('baseJs', function() {
+    return gulp.src(config.src.baseJs)
+        .pipe(gulp.dest(config.dest.js));
+});
+
+gulp.task('js', function() {
+    gulp.start('entry');
+    gulp.start('baseJs');
 });
 
 gulp.task('js-min', function() {
@@ -83,7 +100,7 @@ gulp.task('browserSync', function() {
             config.dest.html
         ],
         server: {
-            baseDir: "./dist"
+            baseDir: "./dist/html"
         }
     });
 });
@@ -97,7 +114,7 @@ gulp.task('clean', function() {
         .pipe(clean());
 });
 
-gulp.task('dev', ['css', 'js', 'html', 'img','module', 'browserSync'], function() {
+gulp.task('dev', ['css', 'js', 'html', 'img', 'module', 'browserSync'], function() {
     var watcher = gulp.watch(config.src.css, ['css']);
     gulp.watch(config.src.html, ['html']);
     gulp.watch(config.src.img, ['img']);

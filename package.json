@@ -1,6 +1,5 @@
 {
   "devDependencies": {
-    "seajs": "^3.0.2",
     "browser-sync": "^2.13.0",
     "gulp": "^3.9.1",
     "gulp-autoprefixer": "^3.1.0",
@@ -12,7 +11,9 @@
     "gulp-notify": "^2.2.0",
     "gulp-plumber": "^1.1.0",
     "gulp-rename": "^1.2.2",
+    "gulp-seajs-combo": "^1.2.3",
     "gulp-sprite2": "^0.3.6",
-    "gulp-uglify": "^1.5.3"
+    "gulp-uglify": "^1.5.3",
+    "seajs": "^3.0.2"
   }
 }

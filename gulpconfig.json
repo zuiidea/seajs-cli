@@ -7,8 +7,15 @@
         "module": [
             "src/module/**/*.*"
         ],
+        "entry": [
+            "src/js/**/entry.js"
+        ],
+        "baseJs": [
+            "src/js/*.js"
+        ],
         "js": [
-            "src/js/**/*.js"
+            "src/js/**/*.js",
+            "!src/js/**/entry.js"
         ],
         "html": [
             "src/html/**/*.html"
