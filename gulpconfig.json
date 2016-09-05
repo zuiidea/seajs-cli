@@ -11,7 +11,7 @@
             "src/js/**/entry.js"
         ],
         "baseJs": [
-            "src/js/*.js"
+            "src/js/base/*.js"
         ],
         "js": [
             "src/js/**/*.js",

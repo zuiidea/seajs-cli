@@ -1,9 +1,12 @@
 define(function(require, exports, module) {
     require("a");
-    // require("../../module/zepto/zepto.min");
-    // require("../../module/swiper/swiper-3.3.1.jquery.min");
-    // require("flexible");
-    // require("fastclick");
-    // require('layer');
-    console.log("模块加载");
+    var fastclick = require("fastclick");
+    var flexible = require("flexible");
+    var layer = require("layer");
+    var swiper = require("swiper");
+    layer.open({
+        content: 'hello layer',
+        skin: 'msg',
+        time: 2
+    });
 });

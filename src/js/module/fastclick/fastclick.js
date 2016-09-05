@@ -1,4 +1,4 @@
-define("fastclick/fastclick.js", function(require, exports, module) {
+define("fastclick", function(require, exports, module) {
     function c(h, v) {
         "use strict";
 

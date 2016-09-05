@@ -19,7 +19,7 @@ var gulp = require('gulp'),
 
 var _task = require('./gulp-task');
 _task({
-    projectName: 'salaryTest'
+    projectName: 'seajsExample'
 })
 
 //css
@@ -43,9 +43,18 @@ gulp.task('css-min', ['css'], function() {
 
 // js
 
+var modulePath='../module/';
+
 gulp.task('entry', function() {
     return gulp.src(config.src.entry)
-        .pipe(seajsCombo())
+        .pipe(seajsCombo({
+            map: {
+              "swiper": modulePath+"swiper/swiper.js",
+              "layer": modulePath+"layer/layer.js",
+              "flexible": modulePath+"flexible/flexible.js",
+              "fastclick": modulePath+"fastclick/fastclick.js"
+            }
+        }))
         .pipe(rename({
             basename: 'build'
         }))
@@ -54,6 +63,7 @@ gulp.task('entry', function() {
 
 gulp.task('baseJs', function() {
     return gulp.src(config.src.baseJs)
+        .pipe(concat('base.js'))
         .pipe(gulp.dest(config.dest.js));
 });
 
@@ -100,7 +110,7 @@ gulp.task('browserSync', function() {
             config.dest.html
         ],
         server: {
-            baseDir: "./dist/html"
+            baseDir: "./dist"
         }
     });
 });
