@@ -1,0 +1,32 @@
+{
+    "src": {
+        "css": [
+            "src/css/**/*.css",
+            "src/css/**/*.less"
+        ],
+        "module": [
+            "src/module/**/*.*"
+        ],
+        "js": [
+            "src/js/**/*.js"
+        ],
+        "html": [
+            "src/html/**/*.html"
+        ],
+        "img": [
+            "src/img/**/*.*"
+        ],
+        "clean": "dist/**/*.*"
+    },
+    "dest": {
+        "css": "dist/css/",
+        "img": "dist/img/",
+        "js": "dist/js/",
+        "html": "dist/html/",
+        "module": "dist/module/"
+    },
+    "res": {
+        "css": "dist/css/**/*.css",
+        "js": "dist/js/**/*.js"
+    }
+}
