@@ -1,7 +1,6 @@
 var gulp = require('gulp'),
     less = require('gulp-less'),
     path = require('path'),
-    less = require('gulp-less'),
     autoprefixer = require('gulp-autoprefixer'),
     minifycss = require('gulp-minify-css'),
     browserSync = require('browser-sync'),
@@ -28,9 +27,6 @@ gulp.task('css', function() {
         .pipe(plumber())
         .pipe(less())
         .pipe(autoprefixer())
-        .pipe(rename({
-            suffix: '.min'
-        }))
         .pipe(gulp.dest(config.dest.css))
 });
 
@@ -139,6 +135,6 @@ gulp.task('default', ['clean'], function() {
     gulp.start('dev');
 });
 
-gulp.task('pub', ['clean'], function() {
-    gulp.start('css', 'concat-js', 'html', 'img', 'css-min', 'js-min');
-});
+// gulp.task('pub', ['clean'], function() {
+//     gulp.start('css', 'concat-js', 'html', 'img', 'css-min', 'js-min');
+// });
