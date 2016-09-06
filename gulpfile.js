@@ -1,6 +1,5 @@
 var gulp = require('gulp'),
     less = require('gulp-less'),
-    path = require('path'),
     autoprefixer = require('gulp-autoprefixer'),
     minifycss = require('gulp-minify-css'),
     browserSync = require('browser-sync'),
@@ -10,12 +9,8 @@ var gulp = require('gulp'),
     clean = require('gulp-clean'),
     plumber = require('gulp-plumber'),
     seajsCombo = require('gulp-seajs-combo'),
+     _task = require('./gulp-task'),
     config = require('./gulpconfig.json');
-
-var _task = require('./gulp-task');
-_task({
-    projectName: 'seajsExample'
-})
 
 //css
 gulp.task('css', function() {
@@ -23,6 +18,7 @@ gulp.task('css', function() {
         .pipe(plumber())
         .pipe(less())
         .pipe(autoprefixer())
+        .pipe(minifycss())
         .pipe(gulp.dest(config.dest.css))
 });
 
@@ -57,12 +53,11 @@ gulp.task('baseJs', function() {
         .pipe(gulp.dest(config.dest.js));
 });
 
-gulp.task('js', function() {
-    gulp.start('entry');
-    gulp.start('baseJs');
+gulp.task('js',['entry','baseJs'], function() {
+
 });
 
-gulp.task('js-min', function() {
+gulp.task('js-min', ['js'],function() {
     return gulp.src(config.res.js)
         .pipe(uglify())
         .pipe(gulp.dest(config.dest.js));
@@ -92,7 +87,7 @@ gulp.task('browserSync', function() {
             config.dest.html
         ],
         server: {
-            baseDir: "./dist"
+            baseDir: "./dist/"
         }
     });
 });
@@ -115,10 +110,12 @@ gulp.task('dev', ['css', 'js', 'html', 'img', 'browserSync'], function() {
     });
 });
 
-gulp.task('default', ['clean'], function() {
-    gulp.start('dev');
+gulp.task('default',['dev'],function() {
+  _task({
+      projectName: 'seajsExample'
+  })
 });
 
-// gulp.task('pub', ['clean'], function() {
-//     gulp.start('css', 'concat-js', 'html', 'img', 'css-min', 'js-min');
-// });
+gulp.task('pub', ['clean'], function() {
+    gulp.start('css-min', 'js-min','html', 'img');
+});

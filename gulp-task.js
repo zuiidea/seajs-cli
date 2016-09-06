@@ -85,7 +85,7 @@ module.exports = function (config) {
                 if (level === 1) {
                     tmpHtml += '<tr class="level1"><td class="td-file sort-file" style="padding-left: ' + indent + 'px"><a href="/html/' + collector['url'] + '" target="_blank">' + basename + '</a></td><td class="td-qrcode"><i class="icon-qrcode"></i></td></tr>';
                 } else {
-                    html += '<tr><td class="td-file" style="padding-left: ' + indent + 'px"><a href="' + collector['url'] + '" target="_blank">' + basename + '</a></td><td class="td-qrcode"><i class="icon-qrcode"></i></td></tr>';
+                    html += '<tr><td class="td-file" style="padding-left: ' + indent + 'px"><a href="/html/' + collector['url'] + '" target="_blank">' + basename + '</a></td><td class="td-qrcode"><i class="icon-qrcode"></i></td></tr>';
                 }
 
             }
