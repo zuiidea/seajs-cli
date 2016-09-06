@@ -3,9 +3,6 @@
         "css": [
             "src/css/**/*.less"
         ],
-        "module": [
-            "src/module/**/*.*"
-        ],
         "entry": [
             "src/js/**/entry.js"
         ],

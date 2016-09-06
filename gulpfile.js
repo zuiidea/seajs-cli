@@ -7,14 +7,10 @@ var gulp = require('gulp'),
     uglify = require('gulp-uglify'),
     concat = require('gulp-concat'),
     rename = require('gulp-rename'),
-    notify = require('gulp-notify'),
     clean = require('gulp-clean'),
-    htmlmin = require('gulp-htmlmin'),
     plumber = require('gulp-plumber'),
-    spriter = require('gulp-sprite2'),
     seajsCombo = require('gulp-seajs-combo'),
     config = require('./gulpconfig.json');
-
 
 var _task = require('./gulp-task');
 _task({
@@ -30,7 +26,6 @@ gulp.task('css', function() {
         .pipe(gulp.dest(config.dest.css))
 });
 
-
 gulp.task('css-min', ['css'], function() {
     return gulp.src(config.res.css)
         .pipe(minifycss())
@@ -39,16 +34,15 @@ gulp.task('css-min', ['css'], function() {
 
 // js
 
-var modulePath='../module/';
-
+var modulePath = '../module/';
 gulp.task('entry', function() {
     return gulp.src(config.src.entry)
         .pipe(seajsCombo({
             map: {
-              "swiper": modulePath+"swiper/swiper.js",
-              "layer": modulePath+"layer/layer.js",
-              "flexible": modulePath+"flexible/flexible.js",
-              "fastclick": modulePath+"fastclick/fastclick.js"
+                "swiper": modulePath + "swiper/swiper.js",
+                "layer": modulePath + "layer/layer.js",
+                "flexible": modulePath + "flexible/flexible.js",
+                "fastclick": modulePath + "fastclick/fastclick.js"
             }
         }))
         .pipe(rename({
@@ -81,13 +75,6 @@ gulp.task('img', function() {
         .pipe(gulp.dest(config.dest.img));
 });
 
-// module
-gulp.task('module', function() {
-    return gulp.src(config.src.module)
-        .pipe(plumber())
-        .pipe(gulp.dest(config.dest.module));
-});
-
 // html
 gulp.task('html', function() {
     return gulp.src(config.src.html)
@@ -102,7 +89,6 @@ gulp.task('browserSync', function() {
             config.dest.css,
             config.dest.js,
             config.dest.img,
-            config.dest.module,
             config.dest.html
         ],
         server: {
@@ -110,7 +96,6 @@ gulp.task('browserSync', function() {
         }
     });
 });
-
 
 // clean
 gulp.task('clean', function() {
@@ -120,12 +105,11 @@ gulp.task('clean', function() {
         .pipe(clean());
 });
 
-gulp.task('dev', ['css', 'js', 'html', 'img', 'module', 'browserSync'], function() {
+gulp.task('dev', ['css', 'js', 'html', 'img', 'browserSync'], function() {
     var watcher = gulp.watch(config.src.css, ['css']);
     gulp.watch(config.src.html, ['html']);
     gulp.watch(config.src.img, ['img']);
     gulp.watch(config.src.js, ['js']);
-    gulp.watch(config.src.module, ['module']);
     watcher.on('change', function(event) {
         console.log('File ' + event.path + ' was ' + event.type + ', running tasks...');
     });
