@@ -1,1 +1,1 @@
-seajs.use("index");
+seajs.use('index')
