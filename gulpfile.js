@@ -30,15 +30,13 @@ gulp.task('css-min', ['css'], function () {
 })
 
 // js
-var modulePath = '../module/'
 gulp.task('entry', function () {
   return gulp.src(config.src.entry)
   .pipe(seajsCombo({
     map: {
-      'swiper': modulePath + 'swiper/swiper.js',
-      'layer': modulePath + 'layer/layer.js',
-      'flexible': modulePath + 'flexible/flexible.js',
-      'fastclick': modulePath + 'fastclick/fastclick.js'
+      'swiper': config.modulePath + 'swiper/swiper.js',
+      'flexible': config.modulePath + 'flexible/flexible.js',
+      'fastclick': config.modulePath + 'fastclick/fastclick.js'
     }
   }))
   .pipe(rename({

@@ -1,9 +1,6 @@
 define(function (require, exports, module) {
   require('a')
-  var layer = require('layer')
-  layer.open({
-    content: 'hello layer',
-    skin: 'msg',
-    time: 2
-  })
+  var swiper = require('swiper')
+  var flexible = require('flexible')
+  var fastclick = require('fastclick')
 })

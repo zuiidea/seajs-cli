@@ -31,5 +31,6 @@
     "res": {
         "css": "dist/css/**/*.css",
         "js": "dist/js/**/*.js"
-    }
+    },
+    "modulePath" : "../module/"
 }

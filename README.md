@@ -1,5 +1,5 @@
 # seajs-cli
-- 基于[seajs](https://github.com/nuysoft/Mock) 的模块管理，热重载，模块打包的脚手架
+- 基于[seajs](https://github.com/seajs/seajs)，[gulp](https://github.com/gulpjs/gulp) 的模块管理，热重载，模块打包的脚手架
 
 ### 快速开始
 
