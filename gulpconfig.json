@@ -14,18 +14,18 @@
             "!src/js/**/entry.js"
         ],
         "html": [
-            "src/html/**/*.html"
+            "src/**/*.html"
         ],
         "img": [
             "src/img/**/*.*"
         ],
-        "clean": "dist/**/*.*"
+        "clean": "dist/*"
     },
     "dest": {
         "css": "dist/css/",
         "img": "dist/img/",
         "js": "dist/js/",
-        "html": "dist/html/",
+        "html": "dist/",
         "module": "dist/module/"
     },
     "res": {
